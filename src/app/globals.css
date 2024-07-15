@@ -1,33 +1,181 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .title {
+        @apply text-2xl text-second-500 dark:text-second-200 font-semibold leading-normal;
+    }
+    .text {
+        @apply text-base text-second-400 dark:text-second-100 font-medium leading-normal;
+    }
+    
+   
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color:  transparent;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit; 
+}
+html,
+body {
+    font-family: Plus+Jakarta+Sans;
+    font-weight: 600;
+    
+    line-height: normal;
+    font-size: 16px;
+}
+
+body.light {
+    color:#141522;
+}
+
+body.dark {
+    color:#DFE1F3;
+    height: 100%;
+}
+
+button,
+input {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-family: inherit;
+}
+button {
+    cursor: pointer;
+    background-color: inherit;
+}
+#root,
+html,
+body,
+main {
+    min-height: 100% !important;
+}
+
+.sidebar {
+    height: 100%;
+}
+
+.calendar-span {
+    position: relative;
+    z-index: 20;
+}
+.calendar {
+    left: -4px;
+    z-index: 12;
+    border-radius:22px;
+    display: flex;
+    width: 40px;
+    height: 72px;
+    background-color: #141522;
+    bottom: -6px;
+    position: absolute;
+}
+.nav-link.active path {
+    stroke:#141522;
+}
+
+
+.nav-link.active {
+    border-radius: 10px;
+    background: #F5F5F7;
+}
+
+.nav-link.active .nav-text {
+    color:#141522;
+}
+body.dark .nav-link.active {
+    border-radius: 10px;
+    background: #546FFF;
+}
+body.dark .nav-link.active .nav-text {
+    color:#fff;
+}
+.swiper-button-disabled {
+    opacity: 0.3;
+}
+
+@media(max-width:1280px){
+    .main {
+        width: calc(100vw - 80px);
+    }
+}
+@media(max-width:768px){
+    .main {
+        width: 100%;
+    }
+}
+
+.chat-user:not(:last-child) {
+    padding-bottom: 16px;
+    border-bottom: #F5F5F7 1px solid;
+}
+.chat-user:not(:first-child) {
+    padding-top: 16px;
+}
+.chat-scroll {
+    overflow-y: auto;
+}
+
+.chat-message-right {
+    max-width: fit-content;
+    color:#fff;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 10px 0px 10px 10px;
+    background:  #546FFF;
+    box-shadow: 0px 1px 3px 0px rgba(84, 111, 255, 0.10);
+}
+
+.chat-message-left {
+    color:#141522;
+    font-weight: 500;
+    padding: 8px 12px;
+    max-width: fit-content;
+    border-radius: 0px 10px 10px 10px;
+    background:  #FFF;
+    box-shadow: 0px 1px 3px 0px rgba(84, 111, 255, 0.10);
+}
+
+@media(min-width:1024px){
+    .chat-list {
+        height: calc(100vh - 256px);
+    }
+    
+    .chat {
+        height: calc(100vh - 344px);
+    }
+}
+@media(max-width:1024px){
+    
+    
+    .chat {
+        height: 100%;
+    }
 }
