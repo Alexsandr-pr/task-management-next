@@ -1,22 +1,30 @@
 "use client"
-// import profile from "@/assets/profil.png"
 
-// import MobileNav from "./MobileNav";
-
-
-// import SearchCustom from "./SearchCustom";
-// import ThemeToggle from "./ThemeToggle";
-// import Icon from "./block/Icon";
-// import IconId from "@/utils/icon-consts";
-// import { Button } from "./ui/button";
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
+import MobileNav from "./MobileNav";
+import SearchCustom from "./SearchCustom";
 
 
-const Header = () => {
+const Header = ({type} : {type?:string}) => {
     const pathname = usePathname()
     let firstPathName = pathname.split('/').slice(0, 2).join('/');
     
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768); 
+    };
+    useEffect(() => {
+        handleResize(); 
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize); 
+        };
+    }, []);
+
     const user = {
         name: "Alex",
         surname: "Pierierodov"
@@ -26,17 +34,15 @@ const Header = () => {
         "/task/1": "Detail Task",
         '/settings': "Settings",
         '/message': "Message",
-        "/mentors": "Explore Mentors"
+        "/mentor": "Explore Mentors"
     }
 
-
+    if(type === "layout" && pathname === "/") return <></>
 
     return (
-        <header className='  border-solid border-main dark:border-none md:border-none px-6 py-8 gap-6 flex flex-col md:p-0 '>
-            
-            <div className="flex flex-col-reverse md:flex-row justify-between md:items-center gap-6">
-            
-                    <div className="flex justify-start flex-col items-start">
+        <header className={` flex flex-col gap-0 md:gap-6 ${pathname === "/" ? " md:pb-10 md:p-0" : " md:p-8" } `}>
+            <div className="flex flex-col-reverse md:flex-row justify-between md:items-center ">
+                    <div className={`flex justify-start flex-col items-start p-6 md:p-0`}>
                         <h1 className="title mb-2">
                             
                             {
@@ -58,28 +64,24 @@ const Header = () => {
                     </div>
                 
                     
-                <div className="flex items-center justify-between md:justify-end gap-6">
-                    {/* {
-                        query && <MobileNav/>
-                    } */}
+                <div className={`flex items-center justify-between md:justify-end gap-6  bg-white md:bg-transparent px-6 py-8 md:p-0 md:border-none border-b border-[#F5F5F7] border-solid`}>
+                    {
+                        isMobile && <MobileNav/>
+                    }
                     
-
-
                     <div className="flex items-center gap-4 md:gap-6">
-                        
                         <Button size="rounded" variant="rounded">
                             <img src="/icons/notification-header.svg" alt="" />
                         </Button>
                         <Button size="rounded" variant="rounded">
                             <img src="/img/profile-header.png" alt="" />
                         </Button>
-                        
                     </div>
                 </div>
             </div>
-            {/* {
-                firstPathName !== "/" && firstPathName !== "/settings"  &&  firstPathName !== "/message" && <SearchCustom/>
-            } */}
+            {
+                <SearchCustom/>
+            }
         </header>
     )
 }

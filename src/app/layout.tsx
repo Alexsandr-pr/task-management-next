@@ -4,6 +4,7 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,26 +17,18 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+
 	return (
 		<html lang="en">
-
 			<body className={inter.className}>
-				
-				
 				<div className={`flex  w-full bg-[#FAFAFA] dark:bg-dark-100`}>
 				<div className="hidden md:flex  md:w-[8vw] min-w-[80px] xl:w-[16vw] 2xl:w-[20vw]">
 					<Sidebar/>
 				</div>
 				<main className="main h-[100%] xl:w-[84vw] 2xl:w-[80vw]">
-					{/* <Header /> */}
 					
-					{/* {
-						pathname !== "/" && (!pathname.startsWith(`/message/`) || !queryTablet) &&
-						<div className="md:p-8 md:border-b md:border-solid md:border-b-main dark:border-none md:bg-white dark:bg-dark-100">
-							<Header />
-						</div>
-					}
-					 */}
+						<Header type="layout"/>
+					
 					{children}
 					
 				</main>

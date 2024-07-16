@@ -4,27 +4,27 @@
 export const publicRoutes = [
     {
         route: "/",
-        imgUrl: "/icons/overview.svg",
+        imgUrl: "/sprite.svg#overview",
         label: "Overview"
     },
     {
         route: "/task",
-        imgUrl: "/icons/nav-task.svg",
+        imgUrl: "/sprite.svg#task",
         label:"Task"
     },
     {
         route: "/mentor",
-        imgUrl: "/icons/nav-mentor.svg",
+        imgUrl: "/sprite.svg#user-octagon",
         label:"Mentors"
     },
     {
         route: "/message",
-        imgUrl: "/icons/message.svg",
+        imgUrl: "/sprite.svg#message",
         label:"Message"
     },
     {
         route: "settings",
-        imgUrl: "/icons/nav-settings.svg",
+        imgUrl: "/sprite.svg#setting-sidebar",
         label:"Settings"
     }
 ]

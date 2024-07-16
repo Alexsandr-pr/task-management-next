@@ -1,8 +1,16 @@
 
 
+"use client"
 
-
-const Skeleton = ({cls, children, loading}) => {
+const Skeleton = ({
+    cls, 
+    children, 
+    loading
+}: {
+    cls:string;
+    children:React.ReactNode;
+    loading:boolean;
+}) => {
     
     if(loading) {
         return (

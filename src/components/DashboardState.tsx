@@ -1,4 +1,4 @@
-
+"use client"
 import LineChart from "@/components/LineChart";
 import CustomSelect from "./CustomSelect";
 
