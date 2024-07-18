@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -19,7 +21,8 @@ export default function RootLayout({
 }>) {
 
 	return (
-		<html lang="en">
+		
+			<html lang="en">
 			<body className={inter.className}>
 				<div className={`flex  w-full bg-[#FAFAFA] dark:bg-dark-100`}>
 				<div className="hidden md:flex  md:w-[8vw] min-w-[80px] xl:w-[16vw] 2xl:w-[20vw]">
@@ -35,5 +38,6 @@ export default function RootLayout({
 			</div>
 			</body>
 		</html>
+		
 	);
 }

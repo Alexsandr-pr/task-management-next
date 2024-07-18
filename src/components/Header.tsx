@@ -7,7 +7,12 @@ import MobileNav from "./MobileNav";
 import SearchCustom from "./SearchCustom";
 
 
-const Header = ({type} : {type?:string}) => {
+
+export default async function Header({type} : {type?:string}) {
+    const user = {
+        firstName:"",
+        lastName:""
+    };
     const pathname = usePathname()
     let firstPathName = pathname.split('/').slice(0, 2).join('/');
     
@@ -25,10 +30,6 @@ const Header = ({type} : {type?:string}) => {
         };
     }, []);
 
-    const user = {
-        name: "Alex",
-        surname: "Pierierodov"
-    }
     const titles = {
         "/task": "Explore Task",
         "/task/1": "Detail Task",
@@ -47,7 +48,7 @@ const Header = ({type} : {type?:string}) => {
                             
                             {
                                 pathname === "/" ? <>
-                                    Hi, {user.name} {user.surname}
+                                    Hi, {user?.firstName} {user?.lastName}
                                 </> 
                                 :
                                 <>
@@ -73,9 +74,11 @@ const Header = ({type} : {type?:string}) => {
                         <Button size="rounded" variant="rounded">
                             <img src="/icons/notification-header.svg" alt="" />
                         </Button>
+
                         <Button size="rounded" variant="rounded">
                             <img src="/img/profile-header.png" alt="" />
                         </Button>
+                        
                     </div>
                 </div>
             </div>
@@ -85,5 +88,3 @@ const Header = ({type} : {type?:string}) => {
         </header>
     )
 }
-
-export default Header
