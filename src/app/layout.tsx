@@ -29,9 +29,7 @@ export default function RootLayout({
 					<Sidebar/>
 				</div>
 				<main className="main h-[100%] xl:w-[84vw] 2xl:w-[80vw]">
-					
-						<Header type="layout"/>
-					
+					<Header type="layout"/>
 					{children}
 					
 				</main>

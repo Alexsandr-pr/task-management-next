@@ -8,8 +8,6 @@
     .text {
         @apply text-base text-second-400 dark:text-second-100 font-medium leading-normal;
     }
-    
-   
 }
 
 *,
